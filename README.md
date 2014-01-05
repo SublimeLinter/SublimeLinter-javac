@@ -3,6 +3,9 @@ SublimeLinter-javac
 
 This linter plugin for [SublimeLinter](http://sublimelinter.readthedocs.org) provides an interface to [javac](http://docs.oracle.com/javase/6/docs/technotes/tools/solaris/javac.html). It will be used with files that have the “Java” syntax.
 
+##### IMPORTANT!
+Please note that because `javac` requires a complete directory context in order to work, this linter plugin currently will only lint a file **when it has been saved**. As soon as you modify the file, all linter marks will be cleared.
+
 ## Installation
 SublimeLinter 3 must be installed in order to use this plugin. If SublimeLinter 3 is not installed, please follow the instructions [here](http://sublimelinter.readthedocs.org/en/latest/installation.html).
 
