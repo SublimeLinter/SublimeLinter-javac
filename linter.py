@@ -51,7 +51,7 @@ class Javac(Linter):
         if options:
             xlint += ':' + options
 
-        return (self.executable_path, xlint, '*', '@')
+        return (self.executable_path, xlint, '*')
 
     def split_match(self, match):
         """
