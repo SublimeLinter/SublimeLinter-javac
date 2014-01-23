@@ -20,7 +20,7 @@ class Javac(Linter):
     syntax = 'java'
     executable = 'javac'
     version_args = '-version'
-    version_re = r'^javac (?P<version>\d+\.\d+\.\d+)'
+    version_re = r'(?P<version>\d+\.\d+\.\d+)'
     version_requirement = '>= 1.7'
     regex = (
         r'^(?P<file>.+?):(?P<line>\d+): '
