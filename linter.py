@@ -49,12 +49,26 @@ class Javac(Linter):
 
         xlint = '-Xlint'
         settings = self.get_view_settings()
-        options = settings.get('lint')
+        lint_options = settings.get('lint')
+        if lint_options:
+            xlint += ':' + lint_options
 
-        if options:
-            xlint += ':' + options
+        command = [self.executable_path, xlint]
 
-        return (self.executable_path, xlint, '*')
+        classpath = settings.get('classpath')
+        if isinstance(classpath, str):
+            classpath = classpath
+        elif classpath == None:
+            classpath = ""
+        elif all(isinstance(item, str) for item in classpath): # check iterable for stringness of all items. Will raise TypeError if some_object is not iterable
+            classpath = ":".join(classpath)
+        else:
+            classpath = ""
+
+        if classpath != "":
+            command += ['-cp', classpath]
+
+        return command
 
     def split_match(self, match):
         """
