@@ -55,6 +55,34 @@ To change the settings in the same way for a single file, you would put this com
 // [SublimeLinter javac-lint:all,-deprecation]
 ```
 
+### Passing options to `javac`
+
+In order to configure `javac` options like the class path, source path, or file encoding,
+the `args` setting can be used.
+
+|Setting|Description|
+|:------|:----------|
+|`args`|An array of strings, alternating between an option and the corresponding value.|
+
+A full list of available options is given [here][1].
+
+For example, the following configuration defines the source file encoding,
+includes the two libraries `lib/some_lib.jar` and `lib/some_other_lib.jar`
+in the classpath,
+and defines `src/` as the project's source path:
+
+```
+"args": [
+    "-encoding", "UTF8",
+    "-cp", "${project}/lib/some_lib.jar:${project}/lib/some_other_lib.jar",
+    "-sourcepath", "${project}/src/"
+]
+```
+
+Note that options and their values must be separate elements in the array
+(i.e. `"args": ["-sourcepath", "/path/to/src"]` does work, while
+`"args": ["-sourcepath /path/to/src"]` does not work).
+
 ## Contributing
 If you would like to contribute enhancements or fixes, please do the following:
 
@@ -72,3 +100,5 @@ Please note that modications should follow these coding guidelines:
 - Please use descriptive variable names, no abbrevations unless they are very well known.
 
 Thank you for helping out!
+
+[1]:http://docs.oracle.com/javase/7/docs/technotes/tools/windows/javac.html
