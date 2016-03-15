@@ -14,7 +14,6 @@ from SublimeLinter.lint import Linter, util
 
 
 class Javac(Linter):
-
     """Provides an interface to javac."""
 
     syntax = 'java'
