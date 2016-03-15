@@ -83,6 +83,41 @@ Note that options and their values must be separate elements in the array
 (i.e. `"args": ["-sourcepath", "/path/to/src"]` does work, while
 `"args": ["-sourcepath /path/to/src"]` does not work).
 
+See the [general SublimeLinter documentation on Settings][2] for how to
+incorporate this setting into your SublimeLinter configuration.
+
+#### Project-specific options
+
+Settings like the class path often only apply to one specific project.
+The general SublimeLinter documentation also [explains][3] how to specify
+project-specific settings in the `sublime-project` file.
+
+For the example above, such a project file could look like this:
+```
+{
+    "folders":
+    [
+        {
+            "path": "."
+        }
+    ],
+    "SublimeLinter":
+    {
+        "linters":
+        {
+            "javac": {
+                "lint": "all",
+                "args": [
+                    "-encoding", "UTF8",
+                     "-cp", "${project}/lib/some_lib.jar:${project}/lib/some_other_lib.jar",
+                    "-sourcepath", "${project}/src/"
+                ]
+            }
+        }
+    }
+}
+```
+
 ## Contributing
 If you would like to contribute enhancements or fixes, please do the following:
 
@@ -102,3 +137,5 @@ Please note that modications should follow these coding guidelines:
 Thank you for helping out!
 
 [1]:http://docs.oracle.com/javase/7/docs/technotes/tools/windows/javac.html
+[2]:http://sublimelinter.readthedocs.org/en/latest/settings.html#settings
+[3]:http://sublimelinter.readthedocs.org/en/latest/settings.html#project-settings
