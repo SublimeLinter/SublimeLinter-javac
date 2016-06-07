@@ -14,7 +14,7 @@ SublimeLinter 3 must be installed in order to use this plugin. If SublimeLinter 
 ### Linter installation
 Before using this plugin, you must ensure that `javac` is installed on your system. `javac` is part of the `java` developer SDK, which can be downloaded [here](http://www.oracle.com/technetwork/java/javase/downloads/index.html).
 
-**NOTE:** This plugin currently supports only JDK 1.7+.
+**NOTE:** This plugin has only been tested with JDK 1.6+ , but it probably works fine with earlier versions.
 
 ### Linter configuration
 In order for `javac` to be executed by SublimeLinter, you must ensure that its path is available to SublimeLinter. Before going any further, please read and follow the steps in [“Finding a linter executable”](http://sublimelinter.readthedocs.org/en/latest/troubleshooting.html#finding-a-linter-executable) through “Validating your PATH” in the documentation.

@@ -19,12 +19,9 @@ class Javac(Linter):
 
     syntax = 'java'
     executable = 'javac'
-    version_args = '-version'
-    version_re = r'(?P<version>\d+\.\d+\.\d+)'
-    version_requirement = '>= 1.7'
     regex = (
         r'^(?P<file>.+?):(?P<line>\d+): '
-        r'(?:(?P<error>error)|(?P<warning>warning)): '
+        r'((?:(?P<error>error)|(?P<warning>warning)): )?'
         r'(?:\[.+?\] )?(?P<message>[^\r\n]+)\r?\n'
         r'[^\r\n]+\r?\n'
         r'(?P<col>[^\^]*)\^'
