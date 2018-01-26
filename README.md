@@ -56,8 +56,8 @@ and defines `src/` as the project's source path:
 ```
 "args": [
     "-encoding", "UTF8",
-    "-cp", "${project}/lib/some_lib.jar:${project}/lib/some_other_lib.jar",
-    "-sourcepath", "${project}/src/"
+    "-cp", "${folder}/lib/some_lib.jar:${folder}/lib/some_other_lib.jar",
+    "-sourcepath", "${folder}/src/"
 ]
 ```
 
@@ -88,8 +88,8 @@ For the example above, such a project file could look like this:
                 "lint": "all",
                 "args": [
                     "-encoding", "UTF8",
-                     "-cp", "${project}/lib/some_lib.jar:${project}/lib/some_other_lib.jar",
-                    "-sourcepath", "${project}/src/"
+                     "-cp", "${folder}/lib/some_lib.jar:${folder}/lib/some_other_lib.jar",
+                    "-sourcepath", "${folder}/src/"
                 ]
             }
         }
