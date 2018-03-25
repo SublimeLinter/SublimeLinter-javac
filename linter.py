@@ -1,27 +1,7 @@
-#
-# linter.py
-# Linter for SublimeLinter3, a code checking framework for Sublime Text 3
-#
-# Written by Aparajita Fishman
-# Copyright (c) 2015-2016 The SublimeLinter Community
-# Copyright (c) 2013-2014 Aparajita Fishman
-#
-# License: MIT
-#
-
-"""This module exports the Javac plugin class."""
-
 from SublimeLinter.lint import Linter, util
 
 
 class Javac(Linter):
-    """Provides an interface to javac."""
-
-    syntax = 'java'
-    executable = 'javac'
-    version_args = '-version'
-    version_re = r'(?P<version>\d+\.\d+\.\d+)'
-    version_requirement = '>= 1.7'
     regex = (
         r'^(?P<file>.+?):(?P<line>\d+): '
         r'(?:(?P<error>error)|(?P<warning>warning)): '
@@ -33,10 +13,9 @@ class Javac(Linter):
     tempfile_suffix = '-'
     error_stream = util.STREAM_STDERR
     defaults = {
-        'lint': ''
+        'lint': '',
+        'selector': 'source.java'
     }
-    inline_settings = 'lint'
-    comment_re = r'\s*/[/*]'
 
     def cmd(self):
         """
