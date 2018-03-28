@@ -33,7 +33,7 @@ class Javac(Linter):
         if options:
             xlint += ':' + options
 
-        return (self.executable_path, xlint, '-encoding', 'UTF8', '*')
+        return ('javac', xlint, '-encoding', 'UTF8', '${args}')
 
     def split_match(self, match):
         """
