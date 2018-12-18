@@ -84,19 +84,14 @@ For the example above, such a project file could look like this:
             "path": "."
         }
     ],
-    "SublimeLinter":
+    "settings":
     {
-        "linters":
-        {
-            "javac": {
-                "lint": "all",
-                "args": [
-                    "-encoding", "UTF8",
-                     "-cp", "${folder}/lib/some_lib.jar:${folder}/lib/some_other_lib.jar",
-                    "-sourcepath", "${folder}/src/"
-                ]
-            }
-        }
+        "SublimeLinter.linters.javac.lint": "all",
+        "SublimeLinter.linters.javac.args": [
+            "-encoding", "UTF8",
+             "-cp", "${folder}/lib/some_lib.jar:${folder}/lib/some_other_lib.jar",
+            "-sourcepath", "${folder}/src/"
+        ]
     }
 }
 ```
