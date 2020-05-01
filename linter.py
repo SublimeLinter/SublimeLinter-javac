@@ -14,6 +14,7 @@ class Javac(Linter):
     error_stream = util.STREAM_STDERR
     defaults = {
         'lint': '',
+        '-classpath::': [],
         'selector': 'source.java'
     }
 
