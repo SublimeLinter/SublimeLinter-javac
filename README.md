@@ -69,6 +69,29 @@ Note that options and their values must be separate elements in the array
 (i.e. `"args": ["-sourcepath", "/path/to/src"]` does work, while
 `"args": ["-sourcepath /path/to/src"]` does not work).
 
+#### Classpath
+
+|Setting|Description|
+|:------|:----------|
+|`classpath`|Elements for the classpath. Accepts a list.|
+
+To configure classpaths with a lot of elements, the `classpath` setting may
+be used alternatively or in addition to `args`.
+
+If *`-sourcepath` is unspecified* (in `args`), `-classpath` can also be used to configure source paths.
+
+The above example would look like this:
+
+```
+"args": ["-encoding", "UTF8"],
+"classpath": [
+    "${folder}/lib/some_lib.jar",
+    "${folder}/lib/some_other_lib.jar",
+    "${folder}/src/", // sourcepath elements go here, too
+]
+```
+
+
 #### Project-specific options
 
 Settings like the class path often only apply to one specific project.
@@ -87,10 +110,11 @@ For the example above, such a project file could look like this:
     "settings":
     {
         "SublimeLinter.linters.javac.lint": "all",
-        "SublimeLinter.linters.javac.args": [
-            "-encoding", "UTF8",
-             "-cp", "${folder}/lib/some_lib.jar:${folder}/lib/some_other_lib.jar",
-            "-sourcepath", "${folder}/src/"
+        "SublimeLinter.linters.javac.args": ["-encoding", "UTF8"],
+        "SublimeLinter.linters.javac.classpath": [
+            "${folder}/lib/some_lib.jar",
+            "${folder}/lib/some_other_lib.jar",
+            "${folder}/src/",
         ]
     }
 }
