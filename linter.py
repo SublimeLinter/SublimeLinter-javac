@@ -3,7 +3,7 @@ from SublimeLinter.lint import Linter, util
 
 class Javac(Linter):
     regex = (
-        r'^(?P<file>.+?):(?P<line>\d+): '
+        r'^(?P<filename>.+?):(?P<line>\d+): '
         r'(?:(?P<error>error)|(?P<warning>warning)): '
         r'(?:\[.+?\] )?(?P<message>[^\r\n]+)\r?\n'
         r'[^\r\n]+\r?\n'
@@ -35,18 +35,3 @@ class Javac(Linter):
             xlint += ':' + options
 
         return ('javac', xlint, '-encoding', 'UTF8', '${args}')
-
-    def split_match(self, match):
-        """
-        Return the components of the match.
-
-        We override this because javac lints all referenced files,
-        and we only want errors from the linted file.
-
-        """
-
-        if match:
-            if match.group('file') != self.filename:
-                return None
-
-        return super().split_match(match)
