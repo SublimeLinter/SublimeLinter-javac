@@ -1,6 +1,17 @@
 from SublimeLinter.lint import Linter, util
 
 
+def utf16_offset_to_index(text, offset):
+    """Return the index in `text` of the character at UTF-16 code unit `offset`."""
+    units = 0
+    for index, char in enumerate(text):
+        if units >= offset:
+            return index
+        units += 2 if ord(char) > 0xFFFF else 1
+
+    return len(text)
+
+
 class Javac(Linter):
     regex = (
         r'^(?P<filename>.+?):(?P<line>\d+): '
@@ -17,6 +28,15 @@ class Javac(Linter):
         '-classpath::': [],
         'selector': 'source.java'
     }
+
+    def reposition_match(self, line, col, m, vv):
+        if col is not None:
+            # javac pads the caret line in UTF-16 code units, a character
+            # outside the Basic Multilingual Plane, e.g. an emoji, counts as
+            # two. Sublime counts characters.
+            col = utf16_offset_to_index(vv.select_line(line), col)
+
+        return super().reposition_match(line, col, m, vv)
 
     def cmd(self):
         """
