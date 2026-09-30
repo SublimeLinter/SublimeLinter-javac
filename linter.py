@@ -2,6 +2,7 @@ from SublimeLinter.lint import Linter, util
 
 
 class Javac(Linter):
+    column_unit = 'utf16'
     regex = (
         r'^(?P<filename>.+?):(?P<line>\d+): '
         r'(?:(?P<error>error)|(?P<warning>warning)): '
